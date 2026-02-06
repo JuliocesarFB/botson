@@ -1,0 +1,274 @@
+:root {
+  --orange: #ff7a00;
+  --dark: #0b0b0e;
+  --dark-2: #141417;
+  --text: #eaeaea;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--dark);
+  color: var(--text);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: radial-gradient(circle, #1a1a1a, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  width: 300px;
+  margin-bottom: 0px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  letter-spacing: 3px;
+}
+
+.hero p {
+  margin: 15px 0;
+  color: #ccc;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: var(--orange);
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff9a2f;
+}
+
+/* TEAM */
+.team {
+  padding: 80px 10%;
+  background: var(--dark-2);
+}
+
+.team h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.players {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.player-card {
+  background: #0f0f13;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.player-card:hover {
+  box-shadow: 0 0 20px var(--orange);
+  transform: translateY(-5px);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--orange);
+
+}
+
+.player-card span {
+  color: var(--orange);
+}
+
+/* STATS */
+.stats {
+  padding: 80px 10%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.stat h3 {
+  font-size: 3rem;
+  color: var(--orange);
+}
+
+.trainings {
+  padding: 80px 10%;
+  background: #0b0b0e;
+}
+
+.trainings h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.training-card {
+  background: #141417;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.training-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(255,122,0,0.2);
+}
+
+.training-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.time {
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.focus {
+  color: var(--orange);
+  font-weight: bold;
+}
+
+.tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.mandatory .tag {
+  background: var(--orange);
+  color: #000;
+}
+
+.optional .tag {
+  background: #222;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #141417;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 1.8rem;
+}
+
+.modal-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.modal-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.modal-stats span {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.2rem;
+  color: var(--orange);
+}
+
+.mvp-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  background: linear-gradient(135deg, #ffd700, #ff9a00);
+  color: #000;
+
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  box-shadow:
+    0 0 10px rgba(255, 215, 0, 0.8),
+    0 0 25px rgba(255, 165, 0, 0.6);
+
+  display: none;
+  z-index: 10;
+}
+
+.player-card.mvp {
+  border: 2px solid #ffd700;
+  box-shadow:
+    0 0 25px rgba(255, 215, 0, 0.4),
+    0 0 60px rgba(255, 165, 0, 0.2);
+  transform: scale(1.03);
+}
+
+
+

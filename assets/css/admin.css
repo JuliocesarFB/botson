@@ -1,0 +1,80 @@
+/* =========================
+   ADMIN AREA
+========================= */
+
+.admin {
+  padding: 80px 10%;
+  background: var(--dark-2);
+}
+
+.admin h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Select de jogador */
+#playerSelect {
+  display: block;
+  margin: 0 auto 40px;
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 16px;
+  background: #0f0f13;
+  color: var(--text);
+  border-radius: 10px;
+  border: 1px solid #222;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Formulário */
+.admin-form {
+  max-width: 420px;
+  margin: 0 auto;
+  display: grid;
+  gap: 15px;
+}
+
+/* Inputs */
+.admin-form input {
+  padding: 14px 16px;
+  background: #0f0f13;
+  border-radius: 10px;
+  border: 1px solid #222;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.admin-form input:focus {
+  border-color: var(--orange);
+}
+
+/* Botão */
+.admin-form button {
+  margin-top: 10px;
+  padding: 15px;
+  background: var(--orange);
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-form button:hover {
+  background: #ff9a2f;
+  transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .admin {
+    padding: 60px 6%;
+  }
+}
