@@ -1,54 +1,38 @@
-const storageKey = "playersStats";
 
-let playersStats = JSON.parse(localStorage.getItem(storageKey)) || {
-  julius: {},
-  edy: {},
-  henri: {},
-  guig4: {},
-  momin: {},
-  dino: {},
-  louis: {}
-};
 
-const select = document.getElementById("playerSelect");
+const supabaseClientUrl = "https://ajlpafdkfhlesoldfdei.supabase.co";
+const supabaseClientKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqbHBhZmRrZmhsZXNvbGRmZGVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0MTA1MzgsImV4cCI6MjA4NTk4NjUzOH0.bwa8vORalnMrZRB6qyxSRO52txFmCnVvKkf5Km0Gu9E";
 
-const inputs = {
-  kd: document.getElementById("kd"),
-  wr: document.getElementById("wr"),
-  games: document.getElementById("games"),
-  fk: document.getElementById("fk"),
-  presence: document.getElementById("presence"),
-  kast: document.getElementById("kast"),
-  hs: document.getElementById("hs")
-};
+const supabase = window.supabase.createClient(
+  supabaseClientUrl,
+  supabaseClientKey
+);
 
-select.onchange = () => {
-  const p = playersStats[select.value] || {};
 
-  inputs.kd.value = p.kd || "";
-  inputs.wr.value = p.wr || "";
-  inputs.games.value = p.games || "";
-  inputs.fk.value = p.fk || "";
-  inputs.presence.value = p.presence || "";
-  inputs.kast.value = p.kast || "";
-  inputs.hs.value = p.hs || "";
-};
+document.getElementById("saveBtn").onclick = async () => {
+  const id = document.getElementById("playerSelect").value;
+  if (!id) return alert("Selecione um jogador");
 
-document.getElementById("saveBtn").addEventListener("click", () => {
-  const player = select.value;
-  if (!player) return alert("Selecione um jogador");
-
-  playersStats[player] = {
-    ...playersStats[player],
-    kd: inputs.kd.value,
-    wr: inputs.wr.value,
-    games: inputs.games.value,
-    fk: inputs.fk.value,
-    presence: inputs.presence.value,
-    kast: inputs.kast.value,
-    hs: inputs.hs.value
+  const stats = {
+    id,
+    kd: Number(kd.value),
+    wr: Number(wr.value),
+    games: Number(games.value),
+    fk: Number(fk.value),
+    presence: Number(presence.value),
+    kast: Number(kast.value),
+    hs: Number(hs.value),
+    updated_at: new Date()
   };
 
-  localStorage.setItem(storageKey, JSON.stringify(playersStats));
-  alert("Estatísticas salvas!");
-});
+  const { error } = await supabase
+    .from("players")
+    .upsert(stats);
+
+  if (error) {
+    console.error(error);
+    alert("Erro ao salvar");
+  } else {
+    alert("Salvo no banco!");
+  }
+};
