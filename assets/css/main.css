@@ -189,6 +189,7 @@ body {
 
 /* MODAL */
 .modal {
+  pointer-events: none;
   display: none;
   position: fixed;
   inset: 0;
@@ -198,6 +199,7 @@ body {
   z-index: 999;
 }
 .modal.active {
+  pointer-events: auto;
   display: flex;
 }
 
@@ -268,6 +270,8 @@ body {
   background: rgba(20, 20, 20, 0.9);
   padding: 60px 20px;
   text-align: center;
+	position: relative;
+  z-index: 20;
 }
 
 .contact h2 {
@@ -286,6 +290,8 @@ body {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 21;
 }
 
 .contact-item {
@@ -296,6 +302,8 @@ body {
   font-weight: bold;
   color: #fff;
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 22;
 }
 
 .contact-item:hover {
@@ -315,6 +323,10 @@ body {
 .whatsapp {
   background: #25D366;
 }
+
+
+
+
 
 
 
