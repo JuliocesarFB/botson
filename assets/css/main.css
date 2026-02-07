@@ -264,6 +264,59 @@ body {
   border-radius: 6px;
 }
 
+.contact {
+  background: rgba(20, 20, 20, 0.9);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact h2 {
+  color: #ffffff;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.contact p {
+  color: #bdbdbd;
+  margin-bottom: 40px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  width: 200px;
+  padding: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+/* Cores individuais */
+.discord {
+  background: #5865F2;
+}
+
+.instagram {
+  background: linear-gradient(45deg, #833AB4, #FD1D1D, #FCAF45);
+}
+
+.whatsapp {
+  background: #25D366;
+}
+
+
 
 
 
