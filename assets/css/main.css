@@ -242,6 +242,30 @@ body {
   color: var(--orange);
 }
 
+/*testando mvp*/
+
+.player-card.mvp {
+  border: 2px solid gold;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  position: relative;
+}
+
+.player-card.mvp::before {
+  content: "MVP";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: gold;
+  color: #000;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+
+
 
 
 

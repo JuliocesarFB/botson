@@ -21,6 +21,7 @@ function num(v) {
 async function loadPlayers() {
 
 
+
   const { data, error } = await supabaseClient
     .from("players")
     .select("*");
@@ -34,7 +35,9 @@ async function loadPlayers() {
   playersCache = data;
 
   updateTeamStats(data);
+  updateMVP(data);
   bindPlayerModal();
+
 }
 
 
@@ -93,6 +96,32 @@ function bindPlayerModal() {
   closeBtn.onclick = () => modal.style.display = "none";
   window.onclick = e => e.target === modal && (modal.style.display = "none");
 }
+
+/*testando mvp*/
+
+function updateMVP(players) {
+  if (!players.length) return;
+
+  let mvpPlayer = players[0];
+
+  players.forEach(p => {
+    if (num(p.kd) > num(mvpPlayer.kd)) {
+      mvpPlayer = p;
+    }
+  });
+
+  // remove MVP antigo
+  document.querySelectorAll(".player-card.mvp")
+    .forEach(c => c.classList.remove("mvp"));
+
+  // adiciona MVP novo
+  const card = document.querySelector(
+    `.player-card[data-player="${mvpPlayer.id}"]`
+  );
+
+  if (card) card.classList.add("mvp");
+}
+
 
 
 
