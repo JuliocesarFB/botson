@@ -102,25 +102,24 @@ function bindPlayerModal() {
 function updateMVP(players) {
   if (!players.length) return;
 
-  let mvpPlayer = players[0];
+  let maxKd = Math.max(...players.map(p => num(p.kd)));
 
-  players.forEach(p => {
-    if (num(p.kd) > num(mvpPlayer.kd)) {
-      mvpPlayer = p;
-    }
-  });
+  const topPlayers = players.filter(p => num(p.kd) === maxKd);
 
-  // remove MVP antigo
   document.querySelectorAll(".player-card.mvp")
     .forEach(c => c.classList.remove("mvp"));
 
-  // adiciona MVP novo
+  if (topPlayers.length !== 1) return;
+
+  const mvp = topPlayers[0];
+
   const card = document.querySelector(
-    `.player-card[data-player="${mvpPlayer.id}"]`
+    `.player-card[data-player="${mvp.id}"]`
   );
 
   if (card) card.classList.add("mvp");
 }
+
 
 
 
