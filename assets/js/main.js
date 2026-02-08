@@ -65,22 +65,34 @@ function updateTeamStats(players) {
   document.getElementById("teamGames").innerText = games;
 }
 
+
 function bindPlayerModal() {
   const modal = document.getElementById("playerModal");
   const closeBtn = document.getElementById("closeModal");
 
-  document.querySelectorAll(".player-card").forEach(card => {
-    card.onclick = () => {
-      const id = card.dataset.player;
-      const p = playersCache.find(pl => pl.id === id);
-      if (!p) return;
+  if (!modal || !closeBtn) {
+    console.error("Modal ou botão fechar não encontrado");
+    return;
+  }
 
-      // avatar
+  document.querySelectorAll(".player-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = Number(card.dataset.player);
+
+      const p = playersCache.find(pl => pl.id === id);
+
+      if (!p) {
+        console.warn("Player não encontrado:", id, playersCache);
+        return;
+      }
+
       const bg = card.querySelector(".avatar").style.backgroundImage;
       document.getElementById("modalAvatar").src =
         bg.replace(/^url\(["']?/, "").replace(/["']?\)$/, "");
 
-      document.getElementById("modalName").innerText = id.toUpperCase();
+      document.getElementById("modalName").innerText = p.name;
+      document.getElementById("modalRole").innerText = p.role;
+
       document.getElementById("statKd").innerText = p.kd ?? "-";
       document.getElementById("statWr").innerText = (p.wr ?? "-") + "%";
       document.getElementById("statGames").innerText = p.games ?? "-";
@@ -89,18 +101,22 @@ function bindPlayerModal() {
       document.getElementById("statKast").innerText = (p.kast ?? "-") + "%";
       document.getElementById("statHs").innerText = (p.hs ?? "-") + "%";
 
-      modal.style.display = "flex";
-    };
+      modal.classList.add("active");
+    });
   });
 
-  closeBtn.onclick = () => modal.style.display = "none";
-  window.addEventListener("click", e => {
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
-});
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
 
+  modal.addEventListener("click", e => {
+    if (e.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
 }
+
+
 
 /*testando mvp*/
 
