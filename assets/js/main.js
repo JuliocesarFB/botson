@@ -5,8 +5,8 @@ let playersCache = [];
 
 async function loadPlayers() {
   const { data, error } = await supabaseClient
-  .from("v_player_stats")
-  .select("*");
+    .from("v_player_full_stats")
+    .select("*");
 
   if (error) {
     console.error("Erro Supabase:", error);
@@ -17,8 +17,50 @@ async function loadPlayers() {
   updateMVP(data);
   bindPlayerModal();
   updateTeamStats(data);
-
 }
+
+
+async function loadPlayerStats() {
+  const { data, error } = await supabaseClient
+    .from("v_player_full_stats")
+    .select(`
+      player_id,
+      nickname,
+      matches,
+      kd,
+      winrate,
+      presence
+    `)
+    .order("winrate", { ascending: false });
+
+  if (error) {
+    console.error("Erro ao carregar stats:", error);
+    return;
+  }
+
+  renderPlayers(data);
+}
+
+function renderPlayers(players) {
+  const tbody = document.getElementById("playersTable");
+  tbody.innerHTML = "";
+
+  players.forEach(p => {
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>${p.nickname}</td>
+      <td>${p.matches ?? 0}</td>
+      <td>${p.kd ? p.kd.toFixed(2) : "0.00"}</td>
+      <td>${p.winrate ? p.winrate.toFixed(1) + "%" : "0%"}</td>
+      <td>${p.presence ? p.presence.toFixed(1) + "%" : "0%"}</td>
+    `;
+
+    tbody.appendChild(tr);
+  });
+}
+
+
 
 function updateTeamStats(players) {
   if (!players.length) return;
@@ -41,19 +83,32 @@ function bindPlayerModal() {
     console.error("Modal ou botão fechar não encontrado");
     return;
   }
-  document.querySelectorAll(".player-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const id = Number(card.dataset.player);
-      const p = playersCache.find(pl => pl.id === id);
-      if (!p) {
-        console.warn("Player não encontrado:", id, playersCache);
-        return;
-      }
+document.querySelectorAll(".player-card").forEach(card => {
+  card.addEventListener("click", () => {
+  const rawName = card.dataset.playerName;
+
+if (!rawName) {
+  console.warn("player-card sem data-player-name", card);
+  return;
+}
+
+const name = rawName.toLowerCase().trim();
+
+const p = playersCache.find(pl =>
+  pl.nickname &&
+  pl.nickname.toLowerCase().trim() === name
+);
+
+if (!p) {
+  console.warn("Player não encontrado no cache:", name, playersCache);
+  return;
+}
+
       const bg = card.querySelector(".avatar").style.backgroundImage;
       document.getElementById("modalAvatar").src = bg
         .replace(/^url\(["']?/, "")
         .replace(/["']?\)$/, "");
-      document.getElementById("modalName").innerText = p.name;
+      document.getElementById("modalName").innerText = p.nickname;
       document.getElementById("modalRole").innerText = p.role;
       const gcLink = document.getElementById("gcLink");
       const faceitLink = document.getElementById("faceitLink");
@@ -70,13 +125,12 @@ function bindPlayerModal() {
         faceitLink.style.display = "none";
       }
       document.getElementById("statKd").innerText = p.kd ?? "-";
-      //document.getElementById("statWr").innerText = p.wr ? `${p.wr}%` : "-";
+      document.getElementById("statWr").innerText = p.winrate !== null && p.winrate !== undefined ? `${Number(p.winrate).toFixed(1)}%` : "-";
       document.getElementById("statGames").innerText = p.games ?? "-";
       document.getElementById("statFk").innerText = p.fk ?? "-";
-      //document.getElementById("statPresence").innerText = p.presence ? `${p.presence}%` : "-";
-      //document.getElementById("statKast").innerText = p.kast ? `${p.kast}%` : "-";
-      document.getElementById("statHs").innerText = p.hs ? `${p.hs}%` : "-";
-
+      document.getElementById("statPresence").innerText = p.presence !== null && p.presence !== undefined ? `${Number(p.presence).toFixed(1)}%`: "-";
+      document.getElementById("statKast").innerText = p.kast !== null && p.kast !== undefined ? `${p.kast}%` : "-";
+      document.getElementById("statHs").innerText = p.hs !== null && p.hs !== undefined ? `${p.hs}%` : "-";
       modal.classList.add("active");
     });
   });
@@ -108,12 +162,15 @@ function updateMVP(players) {
   const mvp = topPlayers[0];
 
   const card = document.querySelector(
-    `.player-card[data-player="${mvp.id}"]`
-  );
+  `.player-card[data-player-name="${mvp.nickname}"]`
+);
+
 
   if (!card) return;
   card.classList.add("mvp");
 
 }
-
-document.addEventListener("DOMContentLoaded", loadPlayers);
+document.addEventListener("DOMContentLoaded", () => {
+  loadPlayers();       
+  loadPlayerStats();   
+});

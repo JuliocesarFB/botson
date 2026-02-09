@@ -10,82 +10,123 @@ const saveBtn=document.getElementById("saveMatch")
 let playersCache=[]
 
 async function loadPlayers(){
-const{data,error}=await supabaseClient.from("players").select("id,name").order("name")
-if(error){alert("Erro ao carregar jogadores");console.error(error);return}
-playersCache=data??[]
+  const { data, error } = await supabaseClient
+    .from("players")
+    .select("id, nickname")
+    .order("nickname")
+
+  if(error){
+    alert("Erro ao carregar jogadores")
+    console.error(error)
+    return
+  }
+
+  playersCache = data ?? []
 }
 
+
 function createPlayerRow(){
-const div=document.createElement("div")
-div.className="player-row"
-div.innerHTML=`
-<select class="player">
-<option value="">Jogador</option>
-${playersCache.map(p=>`<option value="${p.id}">${p.name}</option>`).join("")}
-</select>
-<input class="kd" type="number" step="0.01" min="0" placeholder="KD">
-<input class="hs" type="number" min="0" placeholder="HS">
-<input class="fk" type="number" min="0" placeholder="FK">
-`
-return div
+  const div = document.createElement("div")
+  div.className = "player-row"
+
+  div.innerHTML = `
+    <select class="player">
+      <option value="">Jogador</option>
+      ${playersCache
+        .map(p => `<option value="${p.id}">${p.nickname}</option>`)
+        .join("")}
+    </select>
+
+    <input class="kd" type="number" step="0.01" min="0" placeholder="KD">
+    <input class="hs" type="number" min="0" placeholder="HS">
+    <input class="fk" type="number" min="0" placeholder="FK">
+    <input class="kast" type="number" step="0.1" min="0" max="100" placeholder="KAST %">
+  `
+  return div
 }
+
+
+
 
 addBtn.addEventListener("click",async()=>{
 if(!playersCache.length)await loadPlayers()
 playersDiv.appendChild(createPlayerRow())
 })
 
-saveBtn.addEventListener("click",async()=>{
-const map=document.getElementById("map").value.trim()
-if(!map){alert("Informe o mapa");return}
+saveBtn.addEventListener("click", async () => {
+  const winValue = document.getElementById("matchWin").value;
 
-const {data:match,error:matchError}=await supabaseClient
-.from("matches")
-.insert({map})
-.select()
-.single()
+  if (winValue === "") {
+    alert("Informe se a partida foi vitória ou derrota");
+    return;
+  }
 
-if(matchError){
-alert("Erro ao salvar partida")
-console.error(matchError)
-return
-}
+  const win = winValue === "true";
 
-const rows=[]
+  const map = document.getElementById("map").value.trim();
+  if (!map) {
+    alert("Informe o mapa");
+    return;
+  }
+  if (!document.querySelector(".player-row")) {
+    alert("Adicione ao menos um jogador");
+    return;
+  }
+  const { data: match, error: matchError } = await supabaseClient
+    .from("matches")
+    .insert({
+      map,
+      win
+    })
+    .select()
+    .single();
 
-document.querySelectorAll(".player-row").forEach(row=>{
-const player_id=row.querySelector(".player").value
-const kd=row.querySelector(".kd").value
-const hs=row.querySelector(".hs").value
-const fk=row.querySelector(".fk").value
-if(!player_id||!kd)return
-rows.push({
-match_id:match.id,
-player_id:Number(player_id),
-kd:Number(kd),
-hs:Number(hs||0),
-fk:Number(fk||0)
-})
-})
+  if (matchError) {
+    alert("Erro ao salvar partida");
+    console.error(matchError);
+    return;
+  }
 
-if(!rows.length){
-alert("Adicione ao menos um jogador com KD")
-return
-}
+  const rows = [];
+  document.querySelectorAll(".player-row").forEach(row => {
+    const player_id = Number(row.querySelector(".player").value);
+    const kd = row.querySelector(".kd").value;
+    const hs = row.querySelector(".hs").value;
+    const fk = row.querySelector(".fk").value;
+    const kast = row.querySelector(".kast").value;
 
-const {error:statsError}=await supabaseClient
-.from("match_players")
-.insert(rows)
+    if (!player_id || !kd) return;
 
-if(statsError){
-alert("Erro ao salvar estatísticas")
-console.error(statsError)
-return
-}
+    rows.push({
+      match_id: match.id,
+      player_id,
+      kd: Number(kd),
+      hs: Number(hs || 0),
+      fk: Number(fk || 0),
+      kast: Number(kast || 0)
+    });
+  });
 
-alert("Partida salva com sucesso ✅")
-playersDiv.innerHTML=""
-document.getElementById("map").value=""
-})
+  if (!rows.length) {
+    alert("Adicione ao menos um jogador com KD");
+    return;
+  }
+
+  const { error: statsError } = await supabaseClient
+    .from("match_players")
+    .insert(rows);
+
+  if (statsError) {
+    alert("Erro ao salvar estatísticas");
+    console.error(statsError);
+    return;
+  }
+
+  alert("Partida salva com sucesso ✅");
+  playersDiv.innerHTML = "";
+  document.getElementById("map").value = "";
+  document.getElementById("matchWin").value = "";
+});
+
 
 document.addEventListener("DOMContentLoaded",loadPlayers)

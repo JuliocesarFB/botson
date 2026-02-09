@@ -12,11 +12,19 @@
 </header>
 <main class="admin-container">
 <section class="card">
-<h2>Informações da Partida</h2>
-<div class="form-grid single">
-<input id="map" placeholder="Mapa (ex: Mirage)">
-</div>
+  <h2>Informações da Partida</h2>
+
+  <div class="form-grid">
+    <input id="map" placeholder="Mapa (ex: Mirage)">
+
+    <select id="matchWin">
+      <option value="">Resultado</option>
+      <option value="true">Vitória</option>
+      <option value="false">Derrota</option>
+    </select>
+  </div>
 </section>
+
 <section class="card">
 <h2>Jogadores</h2>
 <div id="players" class="players-grid"></div>
