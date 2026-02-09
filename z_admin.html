@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Admin | BOTS ON</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin">
+<header class="admin-header">
+<h1>Admin • Registrar Partida</h1>
+</header>
+<main class="admin-container">
+<section class="card">
+<h2>Informações da Partida</h2>
+<div class="form-grid single">
+<input id="map" placeholder="Mapa (ex: Mirage)">
+</div>
+</section>
+<section class="card">
+<h2>Jogadores</h2>
+<div id="players" class="players-grid"></div>
+<button id="addPlayer" class="btn secondary">+ Adicionar jogador</button>
+</section>
+<button id="saveMatch" class="btn primary">Registrar Partida</button>
+</main>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>
