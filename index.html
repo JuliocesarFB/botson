@@ -1,166 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BOTS ON | CS2 Team</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="icon" href="assets/imagens/logo.webp" type="image/png">
-
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BOTS ON | CS2 Team</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
 
 <header class="hero">
-  <img src="assets/imagens/logo.webp" alt="BOTS ON Logo" class="logo">
-  <h1>BOTS ON</h1>
-  <p>Treino. Disciplina. Evolução.</p>
-  <a href="#team" class="btn">Conheça o time</a>
+<img src="assets/imagens/logo.webp" alt="BOTS ON Logo" class="logo">
+<h1>BOTS ON</h1>
+<p>Treino. Disciplina. Evolução.</p>
+<a href="#team" class="btn">Conheça o time</a>
 </header>
 
 <section id="team" class="team">
-  <h2>Elenco</h2>
-
-  <div class="players">
-    <div class="player-card" data-player-name="Julius">
-      <div class="avatar" style="background-image: url('assets/imagens/avatarjulius.jpeg');"></div>
-      <h3>JuliuS</h3>
-      <span>IGL</span>
-    </div>
-
-    <div class="player-card" data-player-name="Ei_Edy">
-      <div class="avatar" style="background-image: url('assets/imagens/avataredy.jpg');"></div>
-      <h3>Ei_Edy</h3>
-      <span>Lurker</span>
-    </div>
-
-    <div class="player-card" data-player-name="Henri">
-      <div class="avatar" style="background-image: url('assets/imagens/avatarhenri.jpeg');"></div>
-      <h3>Henri</h3>
-      <span>Rifler</span>
-    </div>
-
-    <div class="player-card" data-player-name="Guig4">
-      <div class="avatar" style="background-image: url('assets/imagens/avatarguig4.jpeg');"></div>
-      <h3>Guig4</h3>
-      <span>Awp</span>
-    </div>
-
-    <div class="player-card" data-player-name="Louis">
-      <div class="avatar" style="background-image: url('assets/imagens/avatarlouis.jpeg');"></div>
-      <h3>Louis </h3>
-      <span>Rifler</span>
-    </div>
-
-    <div class="player-card" data-player-name="Momin">
-      <div class="avatar" style="background-image: url('assets/imagens/avatarmomin.jpeg');"></div>
-      <h3>Momin</h3>
-      <span>Rifler</span>
-    </div>
-
-    <div class="player-card" data-player-name="Dino">
-      <div class="avatar" style="background-image: url('assets/imagens/avatardino.jpeg');"></div>
-      <h3>Dino</h3>
-      <span>Awp</span>
-    </div>
-  </div>
+<h2>Elenco</h2>
+<div class="players" id="playersContainer"></div>
 </section>
 
 <section id="treinos" class="trainings">
-  <h2>Treinos</h2>
-
-  <div class="training-grid">
-    <div class="training-card mandatory">
-      <span class="tag">OBRIGATÓRIO</span>
-      <h3>Sexta-feira</h3>
-      <p class="time">23:30 – 01:30</p>
-      <p class="focus">Foco: Execuções + GC</p>
-    </div>
-
-    <div class="training-card optional">
-      <span class="tag">OPCIONAL</span>
-      <h3>Sábado</h3>
-      <p class="time">18:30 – 20:30</p>
-      <p class="focus">Foco: GC + desafios</p>
-    </div>
-
-    <div class="training-card optional">
-      <span class="tag">OPCIONAL</span>
-      <h3>Domingo</h3>
-      <p class="time">18:30 – 20:30</p>
-      <p class="focus">Foco: GC leve + review</p>
-    </div>
-  </div>
+<h2>Treinos</h2>
+<div class="training-grid">
+<div class="training-card mandatory">
+<span class="tag">OBRIGATÓRIO</span>
+<h3>Sexta-feira</h3>
+<p class="time">23:30 – 01:30</p>
+<p class="focus">Foco: Execuções + GC</p>
+</div>
+<div class="training-card optional">
+<span class="tag">OPCIONAL</span>
+<h3>Sábado</h3>
+<p class="time">18:30 – 20:30</p>
+<p class="focus">Foco: GC + desafios</p>
+</div>
+<div class="training-card optional">
+<span class="tag">OPCIONAL</span>
+<h3>Domingo</h3>
+<p class="time">18:30 – 20:30</p>
+<p class="focus">Foco: GC leve + review</p>
+</div>
+</div>
 </section>
 
 <section class="stats">
-  <h2>Estatísticas do Time</h2>
-
-  <div class="stats-grid">
-    <div class="stat">
-      <h3 id="teamKd">-</h3>
-      <p>K/D Médio</p>
-    </div>
-
-    <div class="stat">
-      <h3 id="teamWr">-</h3>
-      <p>Win Rate</p>
-    </div>
-
-    <div class="stat">
-      <h3 id="teamGames">-</h3>
-      <p>Partidas</p>
-    </div>
-
-    <div class="stat">
-      <h3 id="teamKast">-</h3>
-      <p>KAST Médio</p>
-    </div>
-
-    <div class="stat">
-      <h3 id="teamHs">-</h3>
-      <p>HS Médio</p>
-    </div>
-  </div>
+<h2>Estatísticas do Time</h2>
+<div class="stats-grid">
+<div class="stat">
+<h3 id="teamKd">-</h3>
+<p>K/D Médio</p>
+</div>
+<div class="stat">
+<h3 id="teamWr">-</h3>
+<p>Win Rate</p>
+</div>
+<div class="stat">
+<h3 id="teammatches">-</h3>
+<p>Partidas</p>
+</div>
+<div class="stat">
+<h3 id="teamKast">-</h3>
+<p>KAST Médio</p>
+</div>
+<div class="stat">
+<h3 id="teamHs">-</h3>
+<p>HS Médio</p>
+</div>
+</div>
 </section>
 
 <div class="modal" id="playerModal">
-  <div class="modal-content">
-    <span class="close" id="closeModal">×</span>
-    <img id="modalAvatar" class="modal-avatar">
-    <h2 id="modalName"></h2>
-    <p id="modalRole"></p>
-
-    <div class="modal-links">
-      <a id="gcLink" target="_blank" class="modal-btn gc">GamersClub</a>
-      <a id="faceitLink" target="_blank" class="modal-btn faceit">Faceit</a>
-    </div>
-
-    <div class="modal-stats">
-      <div><strong>K/D</strong><span id="statKd"></span></div>
-      <div><strong>Win Rate</strong><span id="statWr"></span></div>
-      <div><strong>Partidas</strong><span id="statGames"></span></div>
-      <div><strong>First Kills</strong><span id="statFk"></span></div>
-      <div><strong>Presença</strong><span id="statPresence"></span></div>
-      <div><strong>KAST</strong><span id="statKast"></span></div>
-      <div><strong>HS%</strong><span id="statHs"></span></div>
-      
-
-
-    </div>
-  </div>
+<div class="modal-content">
+<span class="close" id="closeModal">×</span>
+<img id="modalAvatar" class="modal-avatar">
+<h2 id="modalName"></h2>
+<p id="modalRole"></p>
+<div class="modal-links">
+<a id="gcLink" target="_blank" class="modal-btn gc">GamersClub</a>
+<a id="faceitLink" target="_blank" class="modal-btn faceit">Faceit</a>
+</div>
+<div class="modal-stats">
+<div><strong>K/D</strong><span id="statKd"></span></div>
+<div><strong>Win Rate</strong><span id="statWr"></span></div>
+<div><strong>Partidas</strong><span id="statmatches"></span></div>
+<div><strong>First Kills</strong><span id="statFk"></span></div>
+<div><strong>Presença</strong><span id="statPresence"></span></div>
+<div><strong>KAST</strong><span id="statKast"></span></div>
+<div><strong>HS%</strong><span id="statHs"></span></div>
+</div>
+</div>
 </div>
 
 <section class="contact">
-  <h2>Entre em Contato</h2>
-  <p>Fale com a equipe Bots On através das nossas redes oficiais.</p>
-
-  <div class="contact-links">
-    <a href="https://discord.gg/fFqkVejBWU" target="_blank" class="contact-item discord">Discord</a>
-    <a href="https://www.instagram.com/bots_on_brasil/" target="_blank" class="contact-item instagram">Instagram</a>
-    <a href="https://chat.whatsapp.com/FYq35YzCHgZ0PaPAcDp8xU" target="_blank" class="contact-item whatsapp">WhatsApp</a>
-  </div>
+<h2>Entre em Contato</h2>
+<p>Fale com a equipe Bots On através das nossas redes oficiais.</p>
+<div class="contact-links">
+<a href="https://discord.gg/fFqkVejBWU" target="_blank" class="contact-item discord">Discord</a>
+<a href="https://www.instagram.com/bots_on_brasil/" target="_blank" class="contact-item instagram">Instagram</a>
+<a href="https://chat.whatsapp.com/FYq35YzCHgZ0PaPAcDp8xU" target="_blank" class="contact-item whatsapp">WhatsApp</a>
+</div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
