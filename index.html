@@ -6,6 +6,9 @@
 <title>BOTS ON | CS2 Team</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/ranking.css">
+
+
 </head>
 
 <body>
@@ -21,6 +24,15 @@
 <h2>Elenco</h2>
 <div class="players" id="playersContainer"></div>
 </section>
+
+<section class="ranking-section">
+  <h2 class="ranking-title">
+    <span class="trophy">🏆</span> Ranking de Presença
+  </h2>
+  <div id="ranking-list"></div>
+</section>
+
+
 
 <section id="treinos" class="trainings">
 <h2>Treinos</h2>
@@ -105,7 +117,10 @@
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/supabase.js"></script>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/ranking.js" defer></script>
 
 </body>
 </html>

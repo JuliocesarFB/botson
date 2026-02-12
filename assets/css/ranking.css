@@ -1,0 +1,193 @@
+.ranking-section {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.ranking-section h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Linha neon abaixo do título */
+.ranking-section h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, gold, #00ff88);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,255,136,0.6);
+}
+
+
+#ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  padding: 18px 22px;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,255,136,0.1);
+}
+
+.rank-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(0,255,136,0.3);
+  border: 1px solid rgba(0,255,136,0.4);
+}
+
+.rank-position {
+  font-size: 22px;
+  font-weight: bold;
+  width: 60px;
+  text-align: center;
+}
+
+.rank-player {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.rank-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00ff88;
+}
+
+.rank-player span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rank-score {
+  font-weight: bold;
+  font-size: 16px;
+  color: #00ff88;
+}
+
+/* 🔥 OURO */
+.rank-item.gold {
+  background: linear-gradient(145deg, #1a1a00, #222200);
+  border: 1px solid gold;
+  box-shadow: 0 0 25px rgba(255,215,0,0.4);
+}
+
+.rank-item.gold .rank-avatar {
+  border-color: gold;
+}
+
+/* 🥈 PRATA */
+.rank-item.silver {
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  border: 1px solid silver;
+  box-shadow: 0 0 20px rgba(192,192,192,0.3);
+}
+
+.rank-item.silver .rank-avatar {
+  border-color: silver;
+}
+
+/* 🥉 BRONZE */
+.rank-item.bronze {
+  background: linear-gradient(145deg, #1a1200, #2a1a00);
+  border: 1px solid #cd7f32;
+  box-shadow: 0 0 20px rgba(205,127,50,0.4);
+}
+
+.rank-item.bronze .rank-avatar {
+  border-color: #cd7f32;
+}
+
+
+
+
+
+/* 📱 Responsivo */
+@media (max-width: 600px) {
+  .rank-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .rank-score {
+    align-self: flex-end;
+  }
+}
+
+.ranking-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 35px;
+  background: linear-gradient(90deg, #00ff88, #00ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.ranking-section {
+  text-align: center;
+  margin: 80px auto;
+}
+
+.ranking-title {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 35px;
+  display: inline-block;
+  background: linear-gradient(90deg, #ff6a00, #ffae00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.ranking-title::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 4px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, #ff6a00, #ffae00);
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255,106,0,0.6);
+}
+
+.trophy {
+  font-size: 30px;
+  margin-right: 10px;
+  filter: drop-shadow(0 0 10px rgba(255,170,0,0.8));
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
