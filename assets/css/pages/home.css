@@ -1,0 +1,173 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background: radial-gradient(circle, #1a1a1a, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero > *:not(canvas) {
+  position: relative;
+  z-index: 1;
+}
+.logo {
+  width: 400px;
+  margin-bottom: 0px;
+}
+.hero h1 {
+  font-size: 4rem;
+  letter-spacing: 3px;
+}
+.hero p {
+  margin: 15px 0;
+  color: var(--text-muted);
+}
+
+
+.team {
+  padding: 80px 10%;
+  background: var(--dark-2);
+}
+.team h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.players {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.stats {
+  padding: 80px 10%;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+.stat h3 {
+  font-size: 3rem;
+  color: var(--orange);
+}
+.trainings {
+  padding: 80px 10%;
+  background: #0b0b0e;
+}
+.trainings h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+.training-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  transition: 0.3s;
+}
+.training-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(255,122,0,0.2);
+}
+.training-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.time {
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.focus {
+  color: var(--orange);
+  font-weight: bold;
+}
+.tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.mandatory .tag {
+  background: var(--orange);
+  color: #000;
+}
+.optional .tag {
+  background: #222;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+}
+
+
+
+.contact {
+  background: rgba(20, 20, 20, 0.9);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+}
+.contact h2 {
+  color: #ffffff;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.contact p {
+  color: #bdbdbd;
+  margin-bottom: 40px;
+}
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 21;
+}
+.contact-item {
+  width: 200px;
+  padding: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 22;
+}
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+.discord {
+  background: #5865F2;
+}
+.instagram {
+  background: linear-gradient(45deg, #833AB4, #FD1D1D, #FCAF45);
+}
+.whatsapp {
+  background: #25D366;
+}
+

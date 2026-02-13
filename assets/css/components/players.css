@@ -1,0 +1,42 @@
+.player-card {
+  background: #0f0f13;
+  padding: 30px;
+  text-align: center;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+.player-card:hover {
+  box-shadow: 0 0 20px var(--orange);
+  transform: translateY(-5px);
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--orange);
+}
+.player-card span {
+  color: var(--orange);
+}
+.player-card.mvp {
+  border: 2px solid gold;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  position: relative;
+  
+}
+.player-card.mvp::before {
+  content: "MVP";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: gold;
+  color: #000;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+}

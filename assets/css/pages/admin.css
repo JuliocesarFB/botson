@@ -119,8 +119,7 @@ select:focus {
   box-shadow: 0 0 0 2px var(--accent-soft);
 }
 
-.btn {
-  width: 100%;
+.admin-btn {
   max-width: 340px;
   margin: 28px auto 0;
   padding: 14px;
@@ -132,22 +131,22 @@ select:focus {
   transition: 0.25s;
 }
 
-.btn.primary {
+.admin-btn.primary {
   background: linear-gradient(135deg, #ff7a00, #ff9a2f);
   color: #000;
 }
 
-.btn.primary:hover {
+.admin-btn.primary:hover {
   filter: brightness(1.1);
 }
 
-.btn.secondary {
+.admin-btn.secondary {
   background: transparent;
   color: var(--accent);
   border: 1px dashed var(--accent);
 }
 
-.btn.secondary:hover {
+.admin-btn.secondary:hover {
   background: var(--accent-soft);
 }
 

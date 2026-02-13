@@ -1,8 +1,4 @@
-.ranking-section {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
+
 
 .ranking-section h2 {
   text-align: center;
@@ -16,7 +12,6 @@
   width: 100%;
 }
 
-/* Linha neon abaixo do título */
 .ranking-section h2::after {
   content: "";
   display: block;
@@ -149,8 +144,10 @@
 }
 
 .ranking-section {
-  text-align: center;
+  max-width: 800px;
   margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .ranking-title {
@@ -168,13 +165,14 @@
 .ranking-title::after {
   content: "";
   display: block;
-  width: 70%;
+  width: 120px;
   height: 4px;
   margin: 12px auto 0;
   background: linear-gradient(90deg, #ff6a00, #ffae00);
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(255,106,0,0.6);
 }
+
 
 .trophy {
   font-size: 30px;

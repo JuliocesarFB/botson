@@ -1,4 +1,5 @@
-const sb = window.supabaseClient;
+import { supabase } from "../config/supabaseClient.js"
+
 
 const playersDiv = document.getElementById("players");
 const addBtn = document.getElementById("addPlayer");
@@ -6,8 +7,11 @@ const saveBtn = document.getElementById("saveMatch");
 
 let playersCache = [];
 
+
+
+
 async function loadPlayers() {
-  const { data, error } = await sb
+  const { data, error } = await supabase
     .from("players")
     .select("id, nickname")
     .order("nickname");
@@ -74,7 +78,7 @@ if (saveBtn) {
       return;
     }
 
-    const { data: match, error: matchError } = await sb
+    const { data: match, error: matchError } = await supabase
       .from("matches")
       .insert({ map })
       .select()
@@ -118,7 +122,7 @@ if (saveBtn) {
       return;
     }
 
-    const { error: presenceError } = await sb
+    const { error: presenceError } = await supabase
       .from("match_players")
       .insert(rowsPresence);
 
@@ -130,14 +134,14 @@ if (saveBtn) {
 
     for (const stat of rowsStats) {
 
-      const { data: existing } = await sb
+      const { data: existing } = await supabase
         .from("player_stats")
         .select("id")
         .eq("player_id", stat.player_id)
         .maybeSingle();
 
       if (existing) {
-        await sb
+        await supabase
           .from("player_stats")
           .update({
             kd: stat.kd,
@@ -147,7 +151,7 @@ if (saveBtn) {
           })
           .eq("player_id", stat.player_id);
       } else {
-        await sb
+        await supabase
           .from("player_stats")
           .insert(stat);
       }

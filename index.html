@@ -6,7 +6,6 @@
 <title>BOTS ON | CS2 Team</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/ranking.css">
 
 
 </head>
@@ -14,6 +13,7 @@
 <body>
 
 <header class="hero">
+<canvas id="particles"></canvas>
 <img src="https://ajlpafdkfhlesoldfdei.supabase.co/storage/v1/object/public/imagens/logo_botson_sem_fundo.png" alt="BOTS ON Logo" class="logo">
 <h1>BOTS ON</h1>
 <p>Treino. Disciplina. Evolução.</p>
@@ -116,11 +116,9 @@
 </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/supabase.js"></script>
 
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/ranking.js" defer></script>
+<script type="module" src="assets/js/pages/home.js"></script>
+<script src="assets/js/services/particles.js"></script>
 
 </body>
 </html>

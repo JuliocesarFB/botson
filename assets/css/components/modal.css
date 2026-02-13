@@ -1,0 +1,78 @@
+.modal {
+  pointer-events: none;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal.active {
+  pointer-events: auto;
+  display: flex;
+}
+.modal-content {
+  background: #141417;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+.modal-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+.modal-stats span {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.2rem;
+  color: var(--orange);
+}
+.modal-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.modal-btn:hover {
+  transform: translateY(-3px);
+}
+
+.modal-btn.gc {
+  background: #2256c6;
+}
+
+.modal-btn.faceit {
+  background: #ff5500;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 1.8rem;
+}
