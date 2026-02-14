@@ -4,6 +4,7 @@ import { bindPlayerModal } from "../components/playerModal.js"
 import { renderRanking } from "../components/ranking.js"
 import { renderPlayers } from "../components/players.js"
 import { getTeamStats } from "../services/teamService.js"
+import { updateMVP } from "../components/mvp.js"
 
 
 let playersCache = []
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderPlayers(players)
 
     bindPlayerModal(playersCache)
+    updateMVP()
 
   } catch (error) {
     console.error("Erro ao carregar dados:", error)
@@ -44,4 +46,6 @@ document.getElementById("teamHs").innerText =
 
 
 })
+
+document.querySelectorAll(".player-card")
 

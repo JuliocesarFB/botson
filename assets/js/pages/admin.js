@@ -1,4 +1,6 @@
 import { supabase } from "../config/supabaseClient.js"
+import { updateMVP } from "../components/mvp.js";
+
 
 
 const playersDiv = document.getElementById("players");
@@ -163,6 +165,15 @@ if (saveBtn) {
     document.getElementById("map").value = "";
     document.getElementById("matchWin").value = "";
   });
+
+  
 }
+
+document.addEventListener("input", (e) => {
+  if (e.target.classList.contains("kd")) {
+    updateMVP();
+  }
+});
+
 
 document.addEventListener("DOMContentLoaded", loadPlayers);
