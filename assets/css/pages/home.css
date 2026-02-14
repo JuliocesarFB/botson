@@ -123,21 +123,29 @@
 
 
 .contact {
-  background: rgba(20, 20, 20, 0.9);
-  padding: 60px 20px;
+  background: linear-gradient(180deg, #0f0f0f, #1a1a1a);
+  padding: 80px 20px;
   text-align: center;
   position: relative;
   z-index: 20;
 }
+
 .contact h2 {
-  color: #ffffff;
-  font-size: 32px;
-  margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
 }
+
 .contact p {
   color: #bdbdbd;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  font-size: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .contact-links {
   display: flex;
   justify-content: center;
@@ -147,20 +155,36 @@
   z-index: 21;
 }
 .contact-item {
-  width: 200px;
-  padding: 15px;
-  border-radius: 10px;
+  width: 220px;
+  padding: 18px;
+  border-radius: 14px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
   position: relative;
-  z-index: 22;
+  overflow: hidden;
 }
+
 .contact-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
+
+.contact-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.contact-item:hover::after {
+  opacity: 1;
+}
+
 .discord {
   background: #5865F2;
 }

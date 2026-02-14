@@ -59,7 +59,7 @@ export function bindPlayerModal(playersCache) {
       document.getElementById("statPresence").innerText = formatPercent(p.presence);
       document.getElementById("statKast").innerText = formatPercent(p.kast);
       document.getElementById("statHs").innerText = formatPercent(p.hs);
-
+      document.getElementById("statFk").innerText = formatNumber(p.fk);
       modal.classList.add("active");
     });
   });
