@@ -134,30 +134,41 @@ if (saveBtn) {
       return;
     }
 
-    for (const stat of rowsStats) {
+for (const stat of rowsStats) {
 
-      const { data: existing } = await supabase
-        .from("player_stats")
-        .select("id")
-        .eq("player_id", stat.player_id)
-        .maybeSingle();
+  const { data: existing } = await supabase
+    .from("player_stats")
+    .select("kd, hs, fk, kast")
+    .eq("player_id", stat.player_id)
+    .maybeSingle();
 
-      if (existing) {
-        await supabase
-          .from("player_stats")
-          .update({
-            kd: stat.kd,
-            hs: stat.hs,
-            fk: stat.fk,
-            kast: stat.kast
-          })
-          .eq("player_id", stat.player_id);
-      } else {
-        await supabase
-          .from("player_stats")
-          .insert(stat);
-      }
-    }
+  if (existing) {
+
+    await supabase
+      .from("player_stats")
+      .update({
+        kd: (existing.kd ?? 0) + stat.kd,
+        hs: (existing.hs ?? 0) + stat.hs,
+        fk: (existing.fk ?? 0) + stat.fk,
+        kast: (existing.kast ?? 0) + stat.kast
+      })
+      .eq("player_id", stat.player_id);
+
+  } else {
+
+    await supabase
+      .from("player_stats")
+      .insert({
+        player_id: stat.player_id,
+        kd: stat.kd,
+        hs: stat.hs,
+        fk: stat.fk,
+        kast: stat.kast
+      });
+  }
+}
+
+
 
     alert("Partida salva com sucesso ✅");
 
