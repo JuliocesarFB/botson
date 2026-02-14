@@ -82,7 +82,11 @@ if (saveBtn) {
 
     const { data: match, error: matchError } = await supabase
       .from("matches")
-      .insert({ map })
+      .insert({
+        map,
+        result: win ? "win" : "loss"
+      })
+
       .select()
       .single();
 
@@ -136,11 +140,16 @@ if (saveBtn) {
 
 for (const stat of rowsStats) {
 
-  const { data: existing } = await supabase
+  const { data: existing, error: selectError } = await supabase
     .from("player_stats")
     .select("kd, hs, fk, kast, matches")
     .eq("player_id", stat.player_id)
     .maybeSingle();
+
+  if (selectError) {
+    console.error("Erro ao buscar stats:", selectError);
+    continue;
+  }
 
   if (existing) {
 
@@ -156,7 +165,7 @@ for (const stat of rowsStats) {
     const newKast =
       ((existing.kast ?? 0) * oldMatches + stat.kast) / newMatches;
 
-    await supabase
+    const { error: updateError } = await supabase
       .from("player_stats")
       .update({
         kd: Number(newKd.toFixed(2)),
@@ -167,9 +176,13 @@ for (const stat of rowsStats) {
       })
       .eq("player_id", stat.player_id);
 
+    if (updateError) {
+      console.error("Erro ao atualizar stats:", updateError);
+    }
+
   } else {
 
-    await supabase
+    const { error: insertError } = await supabase
       .from("player_stats")
       .insert({
         player_id: stat.player_id,
@@ -179,8 +192,13 @@ for (const stat of rowsStats) {
         kast: stat.kast,
         matches: 1
       });
+
+    if (insertError) {
+      console.error("Erro ao inserir stats:", insertError);
+    }
   }
 }
+
 
 
 

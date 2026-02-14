@@ -23,7 +23,6 @@ export function renderPlayers(players) {
       <div class="avatar" style="background-image: url('${avatar}')"></div>
       <h3 class="player-name">${nickname}</h3>
       <span class="player-role">${role}</span>
-      <p>K/D: <span data-kd="${p.kd ?? 0}">${p.kd ?? 0}</span></p>
     `;
 
     container.appendChild(card);
