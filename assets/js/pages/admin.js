@@ -138,19 +138,32 @@ for (const stat of rowsStats) {
 
   const { data: existing } = await supabase
     .from("player_stats")
-    .select("kd, hs, fk, kast")
+    .select("kd, hs, fk, kast, matches")
     .eq("player_id", stat.player_id)
     .maybeSingle();
 
   if (existing) {
 
+    const oldMatches = existing.matches ?? 0;
+    const newMatches = oldMatches + 1;
+
+    const newKd =
+      ((existing.kd ?? 0) * oldMatches + stat.kd) / newMatches;
+
+    const newHs =
+      ((existing.hs ?? 0) * oldMatches + stat.hs) / newMatches;
+
+    const newKast =
+      ((existing.kast ?? 0) * oldMatches + stat.kast) / newMatches;
+
     await supabase
       .from("player_stats")
       .update({
-        kd: (existing.kd ?? 0) + stat.kd,
-        hs: (existing.hs ?? 0) + stat.hs,
+        kd: Number(newKd.toFixed(2)),
+        hs: Number(newHs.toFixed(2)),
+        kast: Number(newKast.toFixed(1)),
         fk: (existing.fk ?? 0) + stat.fk,
-        kast: (existing.kast ?? 0) + stat.kast
+        matches: newMatches
       })
       .eq("player_id", stat.player_id);
 
@@ -163,7 +176,8 @@ for (const stat of rowsStats) {
         kd: stat.kd,
         hs: stat.hs,
         fk: stat.fk,
-        kast: stat.kast
+        kast: stat.kast,
+        matches: 1
       });
   }
 }
