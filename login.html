@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="assets/css/login.css" />
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div class="login-container">
+  
+  <img src="https://ajlpafdkfhlesoldfdei.supabase.co/storage/v1/object/public/imagens/logo_botson_sem_fundo.png" alt="Logo do Time" class="team-logo">
+
+  <h2>Entrar</h2>
+
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Usuário" required />
+    <input type="password" id="password" placeholder="Senha" required />
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p id="message"></p>
+  <p>
+    Somente para o time
+  </p>
+</div>
+
+  <script src="assets/js/services/particles.js"></script>
+  <script type="module" src="assets/js/pages/login.js"></script>
+</body>
+</html>

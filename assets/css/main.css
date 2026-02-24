@@ -9,3 +9,50 @@
 @import url("./pages/home.css");
 @import url("./pages/admin.css");
 
+/* Barra fixa no topo */
+.top-auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Botões base */
+.auth-btn {
+  position: absolute;
+  top: 20px;
+  padding: 8px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+/* ESQUERDA */
+.auth-btn.left {
+  left: 40px;
+  background: transparent;
+  border: 2px solid #ff7300;
+  color: #ff7300;
+}
+
+.auth-btn.left:hover {
+  background: #ff7300;
+  color: white;
+  box-shadow: 0 0 12px rgba(255,115,0,0.8);
+}
+
+/* DIREITA */
+.auth-btn.right {
+  right: 40px;
+  background: linear-gradient(90deg, #ff7300, #ff4500);
+  color: white;
+}
+
+.auth-btn.right:hover {
+  box-shadow: 0 0 15px rgba(255,115,0,0.8);
+  transform: translateY(-2px);
+}

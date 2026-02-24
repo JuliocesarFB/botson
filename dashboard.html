@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | BOTS ON</title>
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <nav class="top-bar">
+    <span id="userNickname"></span>
+    <button id="logoutBtn">Sair</button>
+  </nav>
+
+  <section class="dashboard">
+    <h1>Seu Desempenho</h1>
+
+    <div class="stats-grid">
+
+      <div class="stat">
+        <h3 id="kd">-</h3>
+        <p>K/D</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="hs">-</h3>
+        <p>HS%</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="fk">-</h3>
+        <p>First Kills</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="kast">-</h3>
+        <p>KAST</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="presence">-</h3>
+        <p>Presença</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="container">
+  <h1>Treinos do Time</h1>
+
+  <div class="create-form">
+    <input type="text" placeholder="Título do treino">
+    <textarea placeholder="Descrição"></textarea>
+
+    <input type="date" class="training-date">
+    <input type="time" class="training-time">
+
+    <button>Criar Treino</button>
+  </div>
+
+  <div class="training-list">
+
+    <div class="training-card">
+      <span class="status-badge status-pending">PENDENTE</span>
+      <button class="delete-btn">Remover</button>
+
+      <div class="training-title">Treino Mirage</div>
+      <div class="training-description">
+        Execução A + treino de retake B
+      </div>
+
+      <div class="confirmations">2/3 confirmações</div>
+
+      <label class="confirm-box">
+        <input type="checkbox">
+        Confirmar presença
+      </label>
+    </div>
+
+  </div>
+</div>
+
+
+  <script type="module" src="assets/js/pages/dashboard.js"></script>
+  <script src="assets/js/services/particles.js"></script>
+
+</body>
+</html>
